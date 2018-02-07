@@ -20,3 +20,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.project
+dete-agent/.classpath
+dete-agent/.settings/org.eclipse.core.resources.prefs
+dete-agent/.settings/org.eclipse.jdt.core.prefs
+dete-agent/.settings/org.eclipse.m2e.core.prefs
+dete-server/.classpath
+dete-server/.settings/org.eclipse.core.resources.prefs
+dete-server/.settings/org.eclipse.jdt.core.prefs
+dete-server/.settings/org.eclipse.m2e.core.prefs
+dete-server/data/tmp/db.data
+dete-server/data/tmp/db.redo

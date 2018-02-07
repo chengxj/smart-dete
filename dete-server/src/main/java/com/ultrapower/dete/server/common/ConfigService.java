@@ -1,4 +1,4 @@
-package com.ultrapower.dete.agent.common;
+package com.ultrapower.dete.server.common;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -63,6 +63,19 @@ public class ConfigService {
 			val = value==null?null:String.valueOf(value);
 		}
 		return val;
+	}
+	
+	public int getIntValue(String key) {
+		int dto = 0;
+		String val = null;
+		if (params != null && params.containsKey(key)) {
+			Object value = params.get(key);
+			val = value==null?null:String.valueOf(value);
+		}
+		if (val!= null) {
+			dto = Integer.parseInt(val);
+		}
+		return dto;
 	}
 
 }

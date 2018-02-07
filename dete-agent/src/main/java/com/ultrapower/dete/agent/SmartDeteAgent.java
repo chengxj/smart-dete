@@ -20,9 +20,8 @@ import com.ultrapower.dete.agent.common.ConfigService;
  */
 public class SmartDeteAgent {
 	
-    public static void main( String[] args ) throws JMSException {
-    	
-    	System.out.println("==" + ConfigService.getValue("host"));
+    public static void main( String[] args ) throws JMSException {    	
+    	System.out.println("==" + ConfigService.getInstance().getValue("host"));
 //        String user = "admin";
 //        String password = "admin";
 //        String destination = "event";
