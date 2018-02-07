@@ -24,9 +24,9 @@ public class SmartDeteServer {
 	public static final String CONNECTOR_URI = ConfigService.getInstance().getValue("connector.uri");
 
     public static void main( String[] args ) throws Exception {
-    	// 启动mq
+    	// 启动ActiveMQ
     	BrokerService broker = new BrokerService();
-    	broker.setBrokerName("dete-server");
+    	broker.setBrokerName("dete-broker");
     	broker.setDataDirectory("data");
     	broker.setUseShutdownHook(false);
     	KahaDBStore kahaAdapter = new KahaDBStore();
@@ -37,7 +37,7 @@ public class SmartDeteServer {
     	connector.setUri(new URI(CONNECTOR_URI));
     	broker.addConnector(connector);
     	broker.start();
-    	// 启动api
+    	// jetty启动api,发布http服务
     	URI baseUri = UriBuilder.fromUri(HOST).port(PORT).build();
     	ApiConfig config = new ApiConfig();
     	JettyHttpContainerFactory.createServer(baseUri, config);

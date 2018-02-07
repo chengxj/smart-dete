@@ -17,13 +17,13 @@ public class ConfigService {
 	
 	private static Logger log = LoggerFactory.getLogger(ConfigService.class);
 	private static Map<String, Object> params = new HashMap<String, Object>();
-	private String PATH = this.getClass().getClassLoader().getResource("server.properties").getPath();
+	private String path = this.getClass().getClassLoader().getResource("server.properties").getPath();
 	
 	private ConfigService() {
 		Properties prop = new Properties();
 		InputStream in = null;
 		try {
-			in = new BufferedInputStream(new FileInputStream(PATH));
+			in = new BufferedInputStream(new FileInputStream(path));
 			prop.load(in);
 			in.close();
 			Set<Object> keyValue = prop.keySet();

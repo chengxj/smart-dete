@@ -17,13 +17,13 @@ public class ConfigService {
 	
 	private static Logger log = LoggerFactory.getLogger(ConfigService.class);
 	private static Map<String, Object> params = new HashMap<String, Object>();
-	private String PATH = this.getClass().getClassLoader().getResource("server.properties").getPath();
+	private String path = this.getClass().getClassLoader().getResource("agent.properties").getPath();
 	
 	private ConfigService() {
 		Properties prop = new Properties();
 		InputStream in = null;
 		try {
-			in = new BufferedInputStream(new FileInputStream(PATH));
+			in = new BufferedInputStream(new FileInputStream(path));
 			prop.load(in);
 			in.close();
 			Set<Object> keyValue = prop.keySet();
@@ -63,6 +63,19 @@ public class ConfigService {
 			val = value==null?null:String.valueOf(value);
 		}
 		return val;
+	}
+	
+	public int getIntValue(String key) {
+		int dto = 0;
+		String val = null;
+		if (params != null && params.containsKey(key)) {
+			Object value = params.get(key);
+			val = value==null?null:String.valueOf(value);
+		}
+		if (val!= null) {
+			dto = Integer.parseInt(val);
+		}
+		return dto;
 	}
 
 }
