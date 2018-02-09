@@ -31,3 +31,4 @@ dete-server/.settings/org.eclipse.jdt.core.prefs
 dete-server/.settings/org.eclipse.m2e.core.prefs
 dete-server/data/tmp/db.data
 dete-server/data/tmp/db.redo
+.settings/org.eclipse.core.resources.prefs
