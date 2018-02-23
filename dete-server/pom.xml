@@ -29,6 +29,12 @@
     	<artifactId>javax.ws.rs-api</artifactId>
     	<version>${rs-api.version}</version>
 	</dependency>
+	
+	<dependency>
+	    <groupId>org.glassfish.jersey.core</groupId>
+	    <artifactId>jersey-client</artifactId>
+	    <version>${jersey.version}</version>
+    </dependency>
 	 
 	<dependency>
 	    <groupId>org.glassfish.jersey.containers</groupId>
@@ -95,6 +101,24 @@
 		<artifactId>activemq-broker</artifactId>
 		<version>${activemq.version}</version>
 	</dependency>
+	
+	<dependency>
+    	<groupId>org.glassfish.jersey.ext</groupId>
+    	<artifactId>jersey-mvc</artifactId>
+    	<version>${jersey.version}</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.glassfish.jersey.ext</groupId>
+	    <artifactId>jersey-mvc-jsp</artifactId>
+	    <version>${jersey.version}</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>org.glassfish.jersey.containers</groupId>
+        <artifactId>jersey-container-servlet-core</artifactId>
+        <version>${jersey.version}</version>
+    </dependency>
 	
   </dependencies>
 </project>

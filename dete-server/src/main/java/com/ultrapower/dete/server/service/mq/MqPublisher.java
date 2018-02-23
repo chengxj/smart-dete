@@ -1,4 +1,4 @@
-package com.ultrapower.dete.agent.service.mq;
+package com.ultrapower.dete.server.service.mq;
 
 import javax.jms.Connection;
 import javax.jms.DeliveryMode;
@@ -6,13 +6,11 @@ import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
-
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.ultrapower.dete.agent.common.ConfigService;
+import com.ultrapower.dete.server.common.ConfigService;
 
 /**
  * 消息发布
@@ -25,9 +23,8 @@ public class MqPublisher {
 	private static Logger log = LoggerFactory.getLogger(MqPublisher.class);
 	private static final String USER = "admin";
 	private static final String PWD = "password";
-	private static final String HOST = ConfigService.getInstance().getValue("server.host");
-	private static final int PORT = ConfigService.getInstance().getIntValue("server.port");
-	private static final String TOPIC = "COMMON_QUEUE";
+	private static final String HOST = "localhost";
+	private static final int PORT = ConfigService.getInstance().getIntValue("connector.port");
 	private static ActiveMQConnectionFactory factory = null;
 	
 	private MqPublisher() {
@@ -47,13 +44,13 @@ public class MqPublisher {
 	 * @param messages 消息列表
 	 * @param server 服务器IP
 	 */
-	public void sendMessage(String message) {
+	public void sendMessage(String message, String server) {
 		Connection connection = null;
 		try {
 			connection = factory.createConnection(USER, PWD);		
 	        connection.start();
 	        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	        Destination dest = new ActiveMQTopic(TOPIC);        
+	        Destination dest = new ActiveMQTopic(server);        
 	        MessageProducer producer = session.createProducer(dest);
 	        producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 	        producer.send(session.createTextMessage(message));
@@ -76,13 +73,13 @@ public class MqPublisher {
 	 * @param messages 消息列表
 	 * @param server 服务器IP
 	 */
-	public void sendMessages(String[] messages) {
+	public void sendMessages(String[] messages, String server) {
 		Connection connection = null;
 		try {
 			connection = factory.createConnection(USER, PWD);		
 	        connection.start();
 	        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-	        Destination dest = new ActiveMQTopic(TOPIC);        
+	        Destination dest = new ActiveMQTopic(server);        
 	        MessageProducer producer = session.createProducer(dest);
 	        producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 	        if (messages !=null && messages.length > 0) {

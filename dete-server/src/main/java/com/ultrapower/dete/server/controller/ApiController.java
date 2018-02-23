@@ -1,4 +1,4 @@
-package com.ultrapower.dete.server.api;
+package com.ultrapower.dete.server.controller;
 
 import java.util.ArrayList;
 import java.util.List;

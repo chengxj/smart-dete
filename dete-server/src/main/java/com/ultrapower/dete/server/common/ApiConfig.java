@@ -1,24 +1,16 @@
 package com.ultrapower.dete.server.common;
 
-import org.apache.camel.spi.ExceptionHandler;
 import org.glassfish.jersey.logging.LoggingFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.mvc.jsp.JspMvcFeature;
 
 public class ApiConfig extends ResourceConfig {
 	
-	public ApiConfig() {
-        // 配置api发布目录
-		packages("com.ultrapower.dete.server.api");
-//		packages("simm.spring.restapi.resource");
-		// 
-		// 注册日志
-        register(LoggingFeature.class);
-        // 异常处理
-//        register(ExceptionHandler.class);
-        // 跨域过滤器注册
-//        register(CorsFilter.class);
+	public ApiConfig() {        
+		packages("com.ultrapower.dete.server.controller");// 配置api发布目录
+        register(JspMvcFeature.class);//注册MVC支持
+        property(JspMvcFeature.TEMPLATE_BASE_PATH, "/WEB-INF");//jsp文件所在位置
+        register(LoggingFeature.class);// 注册日志
 	}
-	
-//	public class ExceptionHandler 
 
 }
