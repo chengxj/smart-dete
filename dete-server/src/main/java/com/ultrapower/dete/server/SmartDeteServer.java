@@ -2,11 +2,15 @@ package com.ultrapower.dete.server;
 
 import java.io.File;
 import java.net.URI;
+
 import javax.ws.rs.core.UriBuilder;
+
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.broker.TransportConnector;
 import org.apache.activemq.store.kahadb.KahaDBStore;
+import org.apache.log4j.PropertyConfigurator;
 import org.glassfish.jersey.jetty.JettyHttpContainerFactory;
+
 import com.ultrapower.dete.server.common.ApiConfig;
 import com.ultrapower.dete.server.common.ConfigService;
 import com.ultrapower.dete.server.service.mq.MqListener;
@@ -23,7 +27,8 @@ public class SmartDeteServer {
 	public static final String CONNECTOR_PATH = "data/" + ConfigService.getInstance().getValue("connector.path");
 	public static final String CONNECTOR_NAME = ConfigService.getInstance().getValue("connector.name");
 
-    public static void main( String[] args ) throws Exception {
+    public static void main( String[] args ) throws Exception {    	
+		PropertyConfigurator.configure(SmartDeteServer.class.getResource("/log4j.properties").getFile());
     	// 启动ActiveMQ
     	BrokerService broker = new BrokerService();
     	broker.setBrokerName("dete-broker");
