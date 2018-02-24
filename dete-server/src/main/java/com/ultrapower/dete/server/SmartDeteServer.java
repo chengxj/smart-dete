@@ -27,7 +27,8 @@ public class SmartDeteServer {
 	public static final String CONNECTOR_PATH = "data/" + ConfigService.getInstance().getValue("connector.path");
 	public static final String CONNECTOR_NAME = ConfigService.getInstance().getValue("connector.name");
 
-    public static void main( String[] args ) throws Exception {    	
+    public static void main( String[] args ) throws Exception {
+    	// 指定log4j.properties
 		PropertyConfigurator.configure(SmartDeteServer.class.getResource("/log4j.properties").getFile());
     	// 启动ActiveMQ
     	BrokerService broker = new BrokerService();

@@ -102,6 +102,7 @@
 		<version>${activemq.version}</version>
 	</dependency>
 	
+	<!--
 	<dependency>
     	<groupId>org.glassfish.jersey.ext</groupId>
     	<artifactId>jersey-mvc</artifactId>
@@ -119,6 +120,7 @@
         <artifactId>jersey-container-servlet-core</artifactId>
         <version>${jersey.version}</version>
     </dependency>
+    -->
 	
   </dependencies>
 </project>

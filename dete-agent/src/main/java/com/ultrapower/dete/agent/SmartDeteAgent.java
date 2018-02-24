@@ -1,8 +1,6 @@
 package com.ultrapower.dete.agent;
 
 import javax.jms.JMSException;
-
-import com.ultrapower.dete.agent.common.ConfigService;
 import com.ultrapower.dete.agent.service.mq.MqListener;
 
 /**
